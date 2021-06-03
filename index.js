@@ -33,7 +33,8 @@ server.get('/', (req, res) => {
           ! !! !
              ! /\
              !
-            /\</pre>`);
+            /\ 
+            Hey there. Why don't you take a trip on over to /api</pre>`);
   });
 
 server.get('/api', (req, res) => {
