@@ -1,22 +1,18 @@
 require('dotenv').config()
 const express = require('express')
+const path = require('path')
+
 const server = express()
 
-console.log(process.env.USER) // env USER=gabriel
-console.log(process.env.SHELL) // env SHELL=/bin/zhs
-
-if (process.env.NODE_ENV === 'production') {
-  console.log('this means this code is deployed')
-}
+server.use(express.json())
+server.use(express.static(path.join(__dirname, 'client/build')))
 
 const PORT = process.env.PORT || 5000
-
-server.use(express.json())
 
 console.log('port is -> ', PORT)
 
 server.get('/', (req, res) => {
-    res.send('<h3>API available at /api</h3>');
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   });
 
 server.get('/api', (req, res) => {
