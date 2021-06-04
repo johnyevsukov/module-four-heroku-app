@@ -14,27 +14,18 @@ const PORT = process.env.PORT || 5000
 console.log('port is -> ', PORT)
 
 server.get('/', (req, res) => {
-    res.send(`<pre>     " "
-    " o "
-    "  " "
-   ',' " "
-  ''   " "
- ''    " "
-''    " "
-'    " "
-    "  "  "  "
-    "   '  (((  "
-     "      (((( "
-      " "    ((((( "
-         """""     ""
-           ! !
-         !   !
-        !    !
-          ! !! !
-             ! /\
-             !
-            /\ 
-            Hey there. Why don't you take a trip on over to /api</pre>`);
+    res.send(`
+    <pre>
+
+    ()()         ____
+    (..)        /|o  |
+    /\/\       /o|  o|
+   c\db/o...  /o_|_o_| 
+
+   </pre>
+
+   <h3>Hey there. Why don't you take a trip on over to /api</h3>
+    `);
   });
 
 server.get('/api', (req, res) => {
