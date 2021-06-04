@@ -41,6 +41,31 @@ server.get('/api', (req, res) => {
   res.json({ message: `hello there` })
 })
 
+server.get('*', (req, res) => {
+  res.send(`
+  <pre>
+╭━━━╮┈┈╱╲┈┈┈╱╲
+┃╭━━╯┈┈▏▔▔▔▔▔▕
+┃╰━━━━━▏╭▆┊╭▆▕
+╰┫╯╯╯╯╯▏╰╯▼╰╯▕
+┈┃╯╯╯╯╯▏╰━┻━╯▕
+┈╰┓┏┳━┓┏┳┳━━━╯
+┈┈┃┃┃┈┃┃┃┃┈┈┈┈
+┈┈┗┻┛┈┗┛┗┛┈┈┈┈
+
+  </pre>
+  <h2>whoa there, partner. I think you might be lost.</h2>
+  `)
+})
+
+server.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    custom: 'something exploded in the app',
+    message: err.message,
+    stack: err.stack
+  })
+})
+
 server.listen(PORT, () => {
   console.log(`listening on ${PORT}`)
 })
