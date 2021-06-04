@@ -11,6 +11,8 @@ if (process.env.NODE_ENV === 'production') {
 
 const PORT = process.env.PORT || 5000
 
+server.use(express.json())
+
 console.log('port is -> ', PORT)
 
 server.get('/', (req, res) => {
@@ -18,12 +20,12 @@ server.get('/', (req, res) => {
   });
 
 server.get('/api', (req, res) => {
-  res.json({ message: `api` })
+  res.json({ message: `api up and running` })
 })
 
 server.use('*', (req, res) => {
   res.status(404).json({
-    message: 'not found'
+    message: '404 not found'
   })
 })
 
