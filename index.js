@@ -14,43 +14,17 @@ const PORT = process.env.PORT || 5000
 console.log('port is -> ', PORT)
 
 server.get('/', (req, res) => {
-    res.send(`
-    <pre>
-
-    ┈┈╱╲┈┈┈╱╲┈┈╭━╮┈
-    ┈╱╱╲╲__╱╱╲╲┈╰╮┃┈
-    ┈▏┏┳╮┈╭┳┓▕┈┈┃┃┈
-    ┈▏╰┻┛▼┗┻╯▕┈┈┃┃┈
-    ┈╲┈┈╰┻╯┈┈╱▔▔┈┃┈
-    ┈┈╰━┳━━━╯┈┈┈┈┃┈
-    ┈┈┈┈┃┏┓┣━━┳┳┓┃┈
-    ┈┈┈┈┗┛┗┛┈┈┗┛┗┛┈
-
-    </pre>
-
-   <h3>Hey there. Why don't you take a trip on over to /api</h3>
-    `);
+    res.send('<h3>API available at /api</h3>');
   });
 
 server.get('/api', (req, res) => {
-  res.json({ message: `hello there` })
+  res.json({ message: `api` })
 })
 
-server.get('*', (req, res) => {
-  res.send(`
-  <pre>
-╭━━━╮┈┈╱╲┈┈┈╱╲
-┃╭━━╯┈┈▏▔▔▔▔▔▕
-┃╰━━━━━▏╭▆┊╭▆▕
-╰┫╯╯╯╯╯▏╰╯▼╰╯▕
-┈┃╯╯╯╯╯▏╰━┻━╯▕
-┈╰┓┏┳━┓┏┳┳━━━╯
-┈┈┃┃┃┈┃┃┃┃┈┈┈┈
-┈┈┗┻┛┈┗┛┗┛┈┈┈┈
-
-  </pre>
-  <h2>whoa there, partner. I think you might be lost.</h2>
-  `)
+server.use('*', (req, res) => {
+  res.status(404).json({
+    message: 'not found'
+  })
 })
 
 server.use((err, req, res, next) => {
